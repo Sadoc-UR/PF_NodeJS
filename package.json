@@ -4,14 +4,27 @@
   "description": "An API using Express.js",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sadoc-UR/PF_NodeJS.git"
+  },
   "keywords": [
-    "API"
+    "node",
+    "express",
+    "jwt",
+    "mysql"
   ],
   "author": "Sadoc UR",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sadoc-UR/PF_NodeJS/issues"
+  },
+  "homepage": "https://github.com/Sadoc-UR/PF_NodeJS#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
   }
 }
