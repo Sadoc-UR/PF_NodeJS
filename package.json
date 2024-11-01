@@ -1,0 +1,17 @@
+{
+  "name": "pf_nodejs",
+  "version": "1.0.0",
+  "description": "An API using Express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Sadoc UR",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
