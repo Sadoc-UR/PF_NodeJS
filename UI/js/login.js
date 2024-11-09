@@ -1,6 +1,8 @@
 window.onload = init;
 
 function init() {
+    document.querySelector('.btn-primary').addEventListener('click', login);
+    /*
     if(!localStorage.getItem("")) { //AGREGA token para que se inicie la validacion
         document.querySelector('.btn-secondary').addEventListener('click', function() {
             window.location.href = "signin.html"
@@ -8,8 +10,9 @@ function init() {
         document.querySelector('.btn-primary').addEventListener('click', login);
     }
     else {
-        window.location.href = "user.html";
+        window.location.href = "index.html";
     }
+    */
 }
 
 function login() {

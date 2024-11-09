@@ -9,12 +9,36 @@ function init() {
                 'Authorization': "bearer " + localStorage.getItem("token")
             }
         }
-        loadUser(); 
-    }else {
+        /*
+        loadUser();
+        */
+        document.querySelector('#btn-registro').addEventListener('click', add);
+        document.querySelector('#btn-modificar').addEventListener('click', modify);
+        document.querySelector('#btn-delete').addEventListener('click', del);
+        document.querySelector('#btn-search').addEventListener('click', search);
+    }
+    else {
         window.location.href = "index.html";
     }
 }
 
+function add() {
+    window.location.href = "add.html"
+}
+
+function modify() {
+    window.location.href = "modify.html"
+}
+
+function del() {
+    window.location.href = "delete.html"
+}
+
+function search() {
+    window.location.href = "search.html"
+}
+
+/*
 function loadUser() {
     axios.get(url + "/user", headers)
     .then(function(res) {
@@ -31,3 +55,4 @@ function displayUser(user) {
         body.innerHTML += `<h3>${user[i].user_first_name}<h3>`;
     }
 }
+    */

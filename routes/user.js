@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const user = express.Router();
 const db = require('../config/database');
 
-user.post("/signin", async (req, res, next) => {
+//Agregar a la base de datos
+user.post("/add", async (req, res, next) => {
 
     const  {user_first_name, user_last_name, user_phone, user_mail, user_address, user_password} = req.body
 
@@ -22,6 +23,7 @@ user.post("/signin", async (req, res, next) => {
     return res.status(500).json({ code: 500, message: "Campos incompletos por parte del registro" });
 });
 
+//Inicio de sesion
 user.post("/login", async (req, res, next) => {
     const { user_mail, user_password} = req.body;
     const query =  `SELECT * FROM user WHERE user_mail = '${user_mail}' AND user_password = '${user_password}';`;
@@ -54,6 +56,7 @@ user.delete("/:id([0-9]{1,3})", async (req, res, next) =>{
     return res.status(404).json({ code: 404, message: "Usuario no encontrado"});
 });
 
+//Actualizar los datos de un usuario en la base de datos
 user.put("/:id([0-9]{1,3})", async (req, res, next) =>{
     const { user_first_name, user_last_name, user_phone, user_mail, user_address, user_password } = req.body;
 
@@ -73,6 +76,7 @@ user.put("/:id([0-9]{1,3})", async (req, res, next) =>{
     return res.status(500).json({code: 500, message: "Campos incompletos"});
 });
 
+//Actualizar ciertos datos en la base de datos
 user.patch("/:id([0-9]{1,3})", async (req, res, next) =>{
 
     if(req.body.user_first_name){
@@ -87,12 +91,23 @@ user.patch("/:id([0-9]{1,3})", async (req, res, next) =>{
     return res.status(500).json({ code: 500, message: "Campos incompletos" })
 });
 
-//Para obtener todos los usuarios
-user.get('/', async (req, res, next) => {
+
+user.get('/all', async (req, res, next) => {
     const query = "SELECT * FROM user";
     const rows = await db.query(query);
 
    return res.status(200).json({ code: 200, message: rows});
+});
+
+//Para obtener un usuario por su nombre
+user.get('/search/:name([A-Za-z]+)', async (req, res) => {
+    const name = req.params.name;
+    const userName = await db.query("SELECT * FROM user WHERE CONCAT(REPLACE(user_first_name, ' ', ''), REPLACE(user_last_name, ' ', '')) ='" + name + "';");
+    
+    if (userName.length > 0) {
+        return res.status(200).json({ code: 200, message: userName});
+    }
+    return res.status(404).json({ code: 404, message: "Usuario no encontrado"});
 });
 
 module.exports = user;

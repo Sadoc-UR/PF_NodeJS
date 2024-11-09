@@ -1,18 +1,16 @@
 window.onload = init;
 
 function init() {
-    if(!localStorage.getItem("")) { ///Agrega "token" par aque se haga la incializacion
-        document.querySelector('.btn-secondary').addEventListener('click', function() {
-            window.location.href = "login.html"
-        });
-        document.querySelector('.btn-primary').addEventListener('click', signin);
+    if(localStorage.getItem("token")) { 
+        document.querySelector('#btn-modify').addEventListener('click', modify);
     }
     else {
-        window.location.href = "user.html";
+        window.location.href = "index.html";
     }
 }
 
-function signin() {
+function modify() {
+    var id = document.getElementById('input-user-id').value;
     var firts_name = document.getElementById('input-firts-name').value;
     var last_name = document.getElementById('input-last-name').value;
     var phone = document.getElementById('input-phone').value;
@@ -22,8 +20,8 @@ function signin() {
 
 
     axios({
-        method: 'post',
-        url: 'http://localhost:3000/user/signin',
+        method: 'put',
+        url: 'http://localhost:3000/user/' + id,
         data: {
             user_first_name: firts_name,
             user_last_name: last_name,
@@ -33,10 +31,11 @@ function signin() {
             user_password: pass
         }
     }).then(function(res){
-        alert("Registro Exitoso");
-        window.location.href = "login.html";
+        alert("Modificacion Exitosa");
+        window.location.href = "user.html";
         console.log(res);
     }).catch(function(err){
+        alert("Campos Incompletos");
         console.log(err);
     })
 }
