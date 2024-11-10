@@ -12,66 +12,66 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
     <script src="./js/modify.js"></script>
-
 </head>
 
 <body>
     <div class="container">
         <div class="row mt-5">
-            <div class="col-6 offset-3">
-                <h1>Modificar</h1>
+            <div class="col-12 text-center">
+                <h1>Modificar datos del Usuario</h1>
             </div>
         </div>
-        <div class="row align-items-center">
-            <div class="col-6 offset-3">
-
+        <div class="row">
+            <div class="col-md-6 col-12">
                 <div class="form-group">
                     <label for="input-user-id">ID</label>
-                    <input type="text" class="form-control" id="input-user-id" placeholder="SADOC ABISAI">
-                    <small class="form-text text-muted">ID del usuario.</small>
+                    <input type="text" class="form-control" id="input-user-id" placeholder="123">
+                    <small class="form-text text-muted">ID del usuario a Modificar.</small>
                 </div>
 
                 <div class="form-group">
                     <label for="input-firts-name">Nombre</label>
-                    <input type="text" class="form-control" id="input-firts-name" placeholder="SADOC ABISAI">
-                    <small class="form-text text-muted">Tu nombre.</small>
+                    <input type="text" class="form-control" id="input-firts-name" placeholder=" ">
+                    <small class="form-text text-muted"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="input-last-name">Apellidos</label>
-                    <input type="text" class="form-control" id="input-last-name" placeholder="UBALDO REYES">
-                    <small class="form-text text-muted">Tu apellido.</small>
+                    <input type="text" class="form-control" id="input-last-name" placeholder=" ">
+                    <small class="form-text text-muted"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="input-phone">Telefono</label>
-                    <input type="text" class="form-control" id="input-phone" placeholder="9932427886">
-                    <small class="form-text text-muted">Tu telefono.</small>
+                    <input type="number" class="form-control" id="input-phone" placeholder=" ">
+                    <small class="form-text text-muted"></small>
                 </div>
+            </div>
 
+            <div class="col-md-6 col-12">
                 <div class="form-group">
                     <label for="input-mail">Correo electrónico</label>
-                    <input type="email" class="form-control" id="input-mail" placeholder="correo@dominio.ext">
-                    <small class="form-text text-muted">Un correo para registrarte.</small>
+                    <input type="email" class="form-control" id="input-mail" placeholder=" ">
+                    <small class="form-text text-muted"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="input-address">Direccion</label>
-                    <input type="text" class="form-control" id="input-address" placeholder="VillaLand 302">
-                    <small class="form-text text-muted">Tu Direccion.</small>
+                    <input type="text" class="form-control" id="input-address" placeholder=" ">
+                    <small class="form-text text-muted"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="input-password">Contraseña</label>
-                    <input type="password" class="form-control" id="input-password" placeholder="***********">
+                    <input type="text" class="form-control" id="input-password" placeholder=" ">
                 </div>
+            </div>
+        </div>
 
-
-
-                <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary" id="btn-modify">Dar de alta en sistema</button>
-
-                </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <button class="btn btn-primary" id="btn-modify">Modificar Usuario</button>
+                <button class="btn btn-secondary ml-2" id="btn-return">Regresar</button>
             </div>
         </div>
     </div>

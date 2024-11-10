@@ -3,6 +3,13 @@ const jwt = require('jsonwebtoken');
 const user = express.Router();
 const db = require('../config/database');
 
+user.get('/', async (req, res, next) => {
+    const query = "SELECT * FROM user";
+    const rows = await db.query(query);
+
+   return res.status(200).json({ code: 200, message: rows});
+});
+
 //Agregar a la base de datos
 user.post("/add", async (req, res, next) => {
 
@@ -23,29 +30,8 @@ user.post("/add", async (req, res, next) => {
     return res.status(500).json({ code: 500, message: "Campos incompletos por parte del registro" });
 });
 
-//Inicio de sesion
-user.post("/login", async (req, res, next) => {
-    const { user_mail, user_password} = req.body;
-    const query =  `SELECT * FROM user WHERE user_mail = '${user_mail}' AND user_password = '${user_password}';`;
-    const rows = await db.query(query);
-
-    if(user_mail && user_password) {
-        if(rows.length == 1) {
-            const token = jwt.sign({
-                user_id: rows[0].user_id,
-                user_mail: rows[0].user_mail
-             }, "debugkey");
-            return res.status(200).json({ code: 200, message: token });
-        }
-        else{
-            return res.status(200).json({ code: 401, message:"Usuario y/o contraseña incorrectos" });
-        }
-    }
-    return res.status(200).json({ code: 500, message: "Campos Incompletos"});
-});
-
 //Para borrar a un usuario con su ID
-user.delete("/:id([0-9]{1,3})", async (req, res, next) =>{
+user.delete("/delete/:id([0-9]{1,3})", async (req, res, next) =>{
     const query = `DELETE FROM user WHERE user_id=${req.params.id}`;
 
     const rows = await db.query(query);
@@ -57,7 +43,7 @@ user.delete("/:id([0-9]{1,3})", async (req, res, next) =>{
 });
 
 //Actualizar los datos de un usuario en la base de datos
-user.put("/:id([0-9]{1,3})", async (req, res, next) =>{
+user.put("/modify/:id([0-9]{1,3})", async (req, res, next) =>{
     const { user_first_name, user_last_name, user_phone, user_mail, user_address, user_password } = req.body;
 
     if(user_first_name && user_last_name && user_phone && user_mail && user_address && user_password) {
@@ -76,6 +62,18 @@ user.put("/:id([0-9]{1,3})", async (req, res, next) =>{
     return res.status(500).json({code: 500, message: "Campos incompletos"});
 });
 
+//Para obtener un usuario por su nombre
+user.get('/search/:name([A-Za-z]+)', async (req, res) => {
+    const name = req.params.name;
+    const userName = await db.query("SELECT * FROM user WHERE CONCAT(REPLACE(user_first_name, ' ', ''), REPLACE(user_last_name, ' ', '')) ='" + name + "';");
+    
+    if (userName.length > 0) {
+        return res.status(200).json({ code: 200, message: userName});
+    }
+    return res.status(404).json({ code: 404, message: "Usuario no encontrado"});
+});
+
+
 //Actualizar ciertos datos en la base de datos
 user.patch("/:id([0-9]{1,3})", async (req, res, next) =>{
 
@@ -91,23 +89,5 @@ user.patch("/:id([0-9]{1,3})", async (req, res, next) =>{
     return res.status(500).json({ code: 500, message: "Campos incompletos" })
 });
 
-
-user.get('/all', async (req, res, next) => {
-    const query = "SELECT * FROM user";
-    const rows = await db.query(query);
-
-   return res.status(200).json({ code: 200, message: rows});
-});
-
-//Para obtener un usuario por su nombre
-user.get('/search/:name([A-Za-z]+)', async (req, res) => {
-    const name = req.params.name;
-    const userName = await db.query("SELECT * FROM user WHERE CONCAT(REPLACE(user_first_name, ' ', ''), REPLACE(user_last_name, ' ', '')) ='" + name + "';");
-    
-    if (userName.length > 0) {
-        return res.status(200).json({ code: 200, message: userName});
-    }
-    return res.status(404).json({ code: 404, message: "Usuario no encontrado"});
-});
 
 module.exports = user;

@@ -1,36 +1,34 @@
 window.onload = init;
+var headers = {};
+url = "http://localhost:3000/user/delete/";
 
 function init() {
     if(localStorage.getItem("token")) { 
-        document.querySelector('#btn-delete').addEventListener('click', modify);
+        headers = {
+            headers: {
+                'Authorization': "bearer " + localStorage.getItem("token")
+            }
+        }
+        document.querySelector('#btn-delete').addEventListener('click', delt);
+        document.querySelector('#btn-return').addEventListener('click', retur);
     }
     else {
         window.location.href = "index.html";
     }
 }
 
-function modify() {
+function delt() {
     var id = document.getElementById('input-user-id').value;
-
-    axios({
-        method: 'delete',
-        url: 'http://localhost:3000/user/' + id,
-        /*
-        data: {
-            user_first_name: firts_name,
-            user_last_name: last_name,
-            user_phone: phone,
-            user_mail: mail,
-            user_address: address,
-            user_password: pass
-        }
-            */
-    }).then(function(res){
+    axios.delete(url + id, headers)
+    .then(function(res) {
         alert("Eliminacion Exitosa");
         window.location.href = "user.html";
-        console.log(res);
-    }).catch(function(err){
-        alert("Campos Incompletos");
+    }).catch(function(err) {
+        alert("Usuario no encontrado");
         console.log(err);
     })
+}
+
+function retur() {
+    window.location.href = "user.html";
 }
