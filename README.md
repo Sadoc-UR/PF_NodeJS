@@ -1,45 +1,58 @@
-# Proyecto Final: Sistema de Administración de Empleados
+# Proyecto Final: Sistema de Gestión de Empleados
 
-Este es un proyecto final que consiste en la creación de un sistema para la gestión de empleados para el departamento de Recursos Humanos de la empresa **Taller de Node.js S.A. de C.V.**. Este sistema sustituye el uso de documentos Excel para la administración de los datos de los empleados, implementando un sistema seguro basado en autenticación y autorización de usuarios.
+## Descripción
+
+Este es un sistema desarrollado con **Node.js** y **Express.js**, que permite gestionar los empleados de la empresa **Taller de Node.js S.A. de C.V.**. El sistema proporciona un API para realizar operaciones CRUD sobre los empleados, y está protegido con **autenticación JWT** para asegurar que solo los usuarios autenticados (administradores) tengan acceso.
 
 ## Requerimientos
 
-El sistema cuenta con los siguientes requerimientos.
+1. **Node.js**: El servidor está construido sobre Node.js, utilizando el framework **Express.js** para crear la API.
+2. **MySQL**: La base de datos utilizada es MySQL, que se gestiona localmente a través de **XAMPP**.
+3. **JWT (JSON Web Token)**: Utilizado para la autenticación de los usuarios, garantizando que solo los administradores puedan acceder a la información y realizar acciones sobre los empleados.
 
-1. **Autenticación y autorización**:  
-   El sistema contará con un apartado de inicio de sesión que solo permitirá el ingreso a usuarios dados de alta en la base de datos.
+## Características del Sistema
 
-2. **Framework**:  
-   Será implementado utilizando **Express.js** para la creación de la API.
+1. **Inicio de sesión seguro**:
+   - Los usuarios administradores pueden iniciar sesión utilizando su nombre de usuario y contraseña, que son verificadas a través de la base de datos.
+   
+2. **Autenticación mediante JWT**:
+   - El sistema utiliza **JSON Web Tokens (JWT)** para autenticar a los usuarios. Solo los usuarios autenticados pueden realizar acciones en el sistema.
 
-3. **Autenticación JWT**:  
-   La autenticación se gestionará mediante **JSON Web Tokens (JWT)**.
+3. **Operaciones CRUD**:
+   - Los usuarios administradores pueden:
+     - **Agregar** empleados a la base de datos.
+     - **Modificar** la información de los empleados.
+     - **Eliminar** empleados de la base de datos.
+     - **Buscar** empleados por su nombre.
 
-4. **Acceso restringido**:  
-   El sistema garantizará que solo los usuarios autenticados podrán acceder a la información.
-
-5. **Usuarios administradores**:  
-   Los usuarios dados de alta en la base de datos serán administradores y podrán realizar las siguientes acciones:
-   - **Agregar empleados**: Los administradores podrán agregar nuevos registros de empleados a la base de datos.
-   - **Modificar empleados**: Los administradores podrán editar los datos de los empleados.
-   - **Eliminar empleados**: Los administradores podrán eliminar registros de empleados de la base de datos.
-   - **Buscar empleados**: Los administradores podrán buscar empleados por su nombre.
-
-## Funcionalidades
-
-- **Inicio de sesión seguro**: Los usuarios administradores podrán acceder al sistema mediante su correo y contraseña.
-- **Gestión de empleados**: Los administradores podrán gestionar empleados a través de un CRUD (Crear, Leer, Actualizar y Eliminar).
-- **Seguridad**: El sistema usará JWT para asegurar que solo los usuarios autenticados tengan acceso a las funcionalidades.
+4. **Protección de rutas**:
+   - Las rutas que permiten modificar, agregar o eliminar empleados están protegidas y solo accesibles para los usuarios autenticados.
 
 ## Instalación
 
-1. Clonar el repositorio:
+1. Clona este repositorio en tu máquina local:
 
    ```bash
    git clone https://github.com/Sadoc-UR/PF_NodeJS.git
-   cd PF_NodeJS
+
 2. Instalacion de dependencias
    ```bash
    npm install
 
-3. 
+3. Inicio del servidor
+   ```bash
+   npm start
+4. Dependencias
+   
+express: Framework web para Node.js.
+jsonwebtoken: Para crear y verificar tokens JWT.
+morgan: Middleware para registrar las solicitudes HTTP.
+mysql: Cliente MySQL para interactuar con la base de datos.
+nodemon: Herramienta para reiniciar el servidor automáticamente en el desarrollo.
+
+Autor
+Sadoc UR
+
+Licencia
+Este proyecto está licenciado bajo la ISC License.
+
