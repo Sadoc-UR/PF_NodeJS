@@ -42,17 +42,17 @@ Este es un sistema desarrollado con **Node.js** y **Express.js**, que permite ge
 3. Inicio del servidor
    ```bash
    npm start
-4. Dependencias
+## Dependencias
    
-express: Framework web para Node.js.
-jsonwebtoken: Para crear y verificar tokens JWT.
-morgan: Middleware para registrar las solicitudes HTTP.
-mysql: Cliente MySQL para interactuar con la base de datos.
-nodemon: Herramienta para reiniciar el servidor automáticamente en el desarrollo.
+- express: Framework web para Node.js.
+- jsonwebtoken: Para crear y verificar tokens JWT.
+- morgan: Middleware para registrar las solicitudes HTTP.
+- mysql: Cliente MySQL para interactuar con la base de datos.
+- nodemon: Herramienta para reiniciar el servidor automáticamente en el desarrollo.
 
-Autor
+## Autor
 Sadoc UR
 
-Licencia
+## Licencia
 Este proyecto está licenciado bajo la ISC License.
 
