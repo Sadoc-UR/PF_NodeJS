@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este es un sistema desarrollado con **Node.js** y **Express.js**, que permite gestionar los empleados de la empresa **Taller de Node.js S.A. de C.V.**. El sistema proporciona un API para realizar operaciones CRUD sobre los empleados, y está protegido con **autenticación JWT** para asegurar que solo los usuarios autenticados (administradores) tengan acceso.
+Este es un sistema desarrollado con **Node.js** y **Express.js**, que permite gestionar los empleados de la empresa **Taller de Node.js S.A. de C.V.**. El sistema proporciona un API para realizar operaciones CRUD sobre los empleados, y está protegido con **autenticación JWT** para asegurar que solo los usuarios autenticados tengan acceso.
 
 ## Requerimientos
 
