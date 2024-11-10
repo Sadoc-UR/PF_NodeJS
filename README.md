@@ -4,13 +4,13 @@ Este es un proyecto final que consiste en la creación de un sistema para la ges
 
 ## Requerimientos
 
-El sistema debe cumplir con los siguientes requerimientos:
+El sistema cuenta con los siguientes requerimientos.
 
 1. **Autenticación y autorización**:  
    El sistema contará con un apartado de inicio de sesión que solo permitirá el ingreso a usuarios dados de alta en la base de datos.
 
 2. **Framework**:  
-   Será implementado utilizando **Express.js** para la creación de la API REST.
+   Será implementado utilizando **Express.js** para la creación de la API.
 
 3. **Autenticación JWT**:  
    La autenticación se gestionará mediante **JSON Web Tokens (JWT)**.
@@ -27,7 +27,7 @@ El sistema debe cumplir con los siguientes requerimientos:
 
 ## Funcionalidades
 
-- **Inicio de sesión seguro**: Los usuarios administradores podrán acceder al sistema mediante su nombre de usuario y contraseña.
+- **Inicio de sesión seguro**: Los usuarios administradores podrán acceder al sistema mediante su correo y contraseña.
 - **Gestión de empleados**: Los administradores podrán gestionar empleados a través de un CRUD (Crear, Leer, Actualizar y Eliminar).
 - **Seguridad**: El sistema usará JWT para asegurar que solo los usuarios autenticados tengan acceso a las funcionalidades.
 
@@ -38,3 +38,8 @@ El sistema debe cumplir con los siguientes requerimientos:
    ```bash
    git clone https://github.com/Sadoc-UR/PF_NodeJS.git
    cd PF_NodeJS
+2. Instalacion de dependencias
+   ```bash
+   npm install
+
+3. 
