@@ -39,12 +39,12 @@ function displayUser(user) {
     const userInfo = `
 Detalles del Usuario
 
+ID: ${user.user_id}
 Nombre: ${user.user_first_name} ${user.user_last_name}
 Correo: ${user.user_mail}
 Teléfono: ${user.user_phone}
 Dirección: ${user.user_address}
 Contraseña: ${user.user_password}
-ID: ${user.user_id}
 `;
 
     document.getElementById('result').textContent = userInfo;
