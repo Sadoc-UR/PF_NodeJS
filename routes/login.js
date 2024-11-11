@@ -5,15 +5,15 @@ const db = require('../config/database');
 
 //Inicio de sesion
 login.post("/login", async (req, res, next) => {
-    const { user_mail, user_password} = req.body;
-    const query =  `SELECT * FROM user WHERE user_mail = '${user_mail}' AND user_password = '${user_password}';`;
+    const { admin_mail, admin_password} = req.body;
+    const query =  `SELECT * FROM admin WHERE admin_mail = '${admin_mail}' AND admin_password = '${admin_password}';`;
     const rows = await db.query(query);
 
-    if(user_mail && user_password) {
+    if(admin_mail && admin_password) {
         if(rows.length == 1) {
             const token = jwt.sign({
-                user_id: rows[0].user_id,
-                user_mail: rows[0].user_mail
+                admin_id: rows[0].admin_id,
+                admin_mail: rows[0].admin_mail
              }, "debugkey");
             return res.status(200).json({ code: 200, message: token });
         }

@@ -2,6 +2,7 @@ window.onload = init;
 
 function init() {
     document.querySelector('.btn-primary').addEventListener('click', login);
+    localStorage.removeItem("token");
 }
 
 function login() {
@@ -12,8 +13,8 @@ function login() {
         method: 'post',
         url: 'http://localhost:3000/login/login',
         data: {
-            user_mail: mail,
-            user_password: pass
+            admin_mail: mail,
+            admin_password: pass
         }
     }).then(function(res){
         if(res.data.code === 200) {
